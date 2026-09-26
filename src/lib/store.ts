@@ -112,88 +112,89 @@ export const defaultHeroSlides: HeroSlide[] = [
   {
     id: "hero-1",
     image: ORIGINAL_HERO_1,
-    eyebrow: "Upgrade Your Life",
-    title: "Smart Tech.\nBetter Everyday.",
-    subtitle: "Discover innovative gadgets and accessories built for performance and style.",
-    ctaLabel: "Explore Now",
+    eyebrow: "Eleve Seu Estilo de Vida",
+    title: "Tecnologia Inteligente.\nMelhor no Dia a Dia.",
+    subtitle: "Descubra gadgets e acessórios inovadores, feitos para performance e estilo.",
+    ctaLabel: "Explorar Agora",
     ctaTarget: "catalog",
   },
   {
     id: "hero-2",
     image: ORIGINAL_HERO_2,
-    eyebrow: "New Season 2026",
-    title: "Sound That\nMoves With You.",
-    subtitle: "Wireless earbuds, headphones and speakers tuned for pure, immersive audio.",
-    ctaLabel: "Shop Audio",
+    eyebrow: "Nova Temporada 2026",
+    title: "Som Que\nSe Move Com Você.",
+    subtitle:
+      "Fones sem fio, headphones e caixas de som afinados para um áudio puro e imersivo.",
+    ctaLabel: "Comprar Áudio",
     ctaTarget: "catalog",
   },
   {
     id: "hero-3",
     image: ORIGINAL_HERO_3,
-    eyebrow: "Power Up",
-    title: "Charge Fast.\nGo Further.",
-    subtitle: "Power banks, wireless chargers and stations that keep every device alive.",
-    ctaLabel: "Shop Power",
+    eyebrow: "Recarregue",
+    title: "Carregue Rápido.\nVá Mais Longe.",
+    subtitle: "Power banks, carregadores sem fio e estações que mantêm todo dispositivo ligado.",
+    ctaLabel: "Comprar Energia",
     ctaTarget: "catalog",
   },
   {
     id: "hero-4",
     image: PEX("11398246"),
-    eyebrow: "Studio Sound",
-    title: "Hear Every\nSingle Detail.",
-    subtitle: "Over-ear headphones with adaptive noise cancelling and 40h of battery life.",
-    ctaLabel: "Shop Headphones",
+    eyebrow: "Som de Estúdio",
+    title: "Ouça Cada\nPequeno Detalhe.",
+    subtitle: "Headphones over-ear com cancelamento de ruído adaptativo e 40h de bateria.",
+    ctaLabel: "Comprar Headphones",
     ctaTarget: "catalog",
   },
   {
     id: "hero-5",
     image: PEX("31018745"),
-    eyebrow: "Built To Win",
-    title: "Level Up\nYour Setup.",
-    subtitle: "RGB gear, mechanical keyboards and precision mice for serious players.",
-    ctaLabel: "Shop Gaming",
+    eyebrow: "Feito Para Vencer",
+    title: "Evolua\nSeu Setup.",
+    subtitle: "Equipamentos RGB, teclados mecânicos e mouses de precisão para jogadores sérios.",
+    ctaLabel: "Comprar Gaming",
     ctaTarget: "catalog",
   },
 ];
 
 export const defaultBenefits: Benefit[] = [
-  { id: "b1", icon: "truck", title: "Free Shipping", copy: "On orders over $50" },
-  { id: "b2", icon: "returns", title: "30-Day Returns", copy: "Easy returns & refunds" },
-  { id: "b3", icon: "shield", title: "Secure Payments", copy: "100% secure checkout" },
-  { id: "b4", icon: "support", title: "24/7 Support", copy: "We're here to help" },
+  { id: "b1", icon: "truck", title: "Frete Grátis", copy: "Em compras acima de R$50" },
+  { id: "b2", icon: "returns", title: "Devolução em 30 Dias", copy: "Trocas e devoluções facilitadas" },
+  { id: "b3", icon: "shield", title: "Pagamento Seguro", copy: "Finalização de compra 100% segura" },
+  { id: "b4", icon: "support", title: "Suporte 24/7", copy: "Estamos aqui para ajudar" },
 ];
 
 /** The four original GizmoHub collections, kept exactly as they shipped. */
 export const defaultCollections: Collection[] = [
   {
     id: "audio",
-    name: "Audio Devices",
+    name: "Dispositivos de Áudio",
     image: PEX("3756985"),
-    tagline: "Earbuds, speakers & headphones",
+    tagline: "Fones, caixas de som e headphones",
   },
   {
     id: "smart-watches",
-    name: "Smart Watches",
+    name: "Relógios Inteligentes",
     image: PEX("31541678"),
-    tagline: "Track every move",
+    tagline: "Acompanhe cada movimento",
   },
   {
     id: "power",
-    name: "Power Solutions",
+    name: "Soluções de Energia",
     image: PEX("4765366"),
-    tagline: "Chargers & power banks",
+    tagline: "Carregadores e power banks",
   },
   {
     id: "drones-cameras",
-    name: "Drones & Cameras",
+    name: "Drones & Câmeras",
     image: PEX("8821970"),
-    tagline: "Capture from above",
+    tagline: "Capture do alto",
   },
   {
     id: "gaming",
-    name: "Gaming Gear",
+    name: "Equipamentos Gamer",
     image: PEX("7862493"),
-    tagline: "Mice, keyboards & headsets",
+    tagline: "Mouses, teclados e headsets",
   },
 ];
 
@@ -226,7 +227,7 @@ const seed: SeedProduct[] = [
     image: PEX("12564670"),
     gallery: [PEX("31541678"), PEX("5081914")],
     description:
-      '1.85" AMOLED display, 24/7 heart-rate and SpO2 monitoring, 110+ sport modes and up to 14 days of battery life.',
+      'Tela AMOLED de 1,85", monitoramento de frequência cardíaca e SpO2 24 horas por dia, mais de 110 modos esportivos e até 14 dias de bateria.',
     rating: 4.8,
     reviews: 1842,
     stock: 24,
@@ -243,7 +244,7 @@ const seed: SeedProduct[] = [
     image: PEX("11700618"),
     gallery: [PEX("5081914"), PEX("437038")],
     description:
-      "Minimalist smartwatch with always-on display, built-in GPS, sleep tracking and a lightweight aluminium body.",
+      "Smartwatch minimalista com tela sempre ativa, GPS integrado, monitoramento de sono e corpo leve em alumínio.",
     rating: 4.6,
     reviews: 963,
     stock: 18,
@@ -251,14 +252,14 @@ const seed: SeedProduct[] = [
   {
     id: 6,
     name: "Zenith Band 5",
-    category: "Fitness Band",
+    category: "Pulseira Fitness",
     collection: "smart-watches",
     price: 59.99,
     badge: "NEW",
     image: PEX("5081914"),
     gallery: [PEX("51011"), PEX("8217430")],
     description:
-      "Ultra-light fitness band with 5ATM water resistance, stress monitoring and 21 days of standby battery.",
+      "Pulseira fitness ultraleve com resistência à água de 5ATM, monitoramento de estresse e 21 dias de bateria em standby.",
     rating: 4.4,
     reviews: 421,
     stock: 40,
@@ -272,7 +273,7 @@ const seed: SeedProduct[] = [
     image: PEX("8217430"),
     gallery: [PEX("437038"), PEX("18662969")],
     description:
-      "Titanium smartwatch with dual-band GPS, offline maps, sapphire glass and a bright 2000-nit display.",
+      "Smartwatch de titânio com GPS dual-band, mapas offline, vidro de safira e tela brilhante de 2000 nits.",
     rating: 4.9,
     reviews: 512,
     stock: 9,
@@ -280,7 +281,7 @@ const seed: SeedProduct[] = [
   {
     id: 8,
     name: "Nova Fit Pro",
-    category: "Fitness Band",
+    category: "Pulseira Fitness",
     collection: "smart-watches",
     price: 89.99,
     oldPrice: 119.99,
@@ -288,7 +289,7 @@ const seed: SeedProduct[] = [
     image: PEX("18662969"),
     gallery: [PEX("51011"), PEX("5081914")],
     description:
-      "Curved AMOLED band with 150+ watch faces, VO2 max insights and fast magnetic charging.",
+      "Pulseira AMOLED curva com mais de 150 mostradores, análise de VO2 máximo e carregamento magnético rápido.",
     rating: 4.5,
     reviews: 733,
     stock: 31,
@@ -302,7 +303,7 @@ const seed: SeedProduct[] = [
     image: PEX("437038"),
     gallery: [PEX("8217430"), PEX("11700618")],
     description:
-      "Stainless-steel smartwatch with a rotating crown, leather strap and 10-day battery for everyday elegance.",
+      "Smartwatch em aço inoxidável com coroa giratória, pulseira de couro e 10 dias de bateria para o dia a dia com elegância.",
     rating: 4.7,
     reviews: 288,
     stock: 15,
@@ -310,13 +311,13 @@ const seed: SeedProduct[] = [
   {
     id: 10,
     name: "Nova Fit Lite",
-    category: "Fitness Band",
+    category: "Pulseira Fitness",
     collection: "smart-watches",
     price: 45.99,
     image: PEX("51011"),
     gallery: [PEX("5081914"), PEX("18662969")],
     description:
-      "Essential activity tracker with step, calorie and sleep tracking plus 14 days of battery for under $50.",
+      "Monitor de atividades essencial com contagem de passos, calorias e sono, além de 14 dias de bateria por menos de R$50.",
     rating: 4.2,
     reviews: 156,
     stock: 52,
@@ -326,14 +327,14 @@ const seed: SeedProduct[] = [
   {
     id: 1,
     name: "SoundPro X1",
-    category: "Wireless Earbuds",
+    category: "Fones de Ouvido Sem Fio",
     collection: "audio",
     price: 79.99,
     badge: "NEW",
     image: PEX("9528219"),
     gallery: [PEX("3921827"), PEX("33797659")],
     description:
-      "Hybrid ANC earbuds with 42h total playtime, transparency mode and a pocket-friendly wireless charging case.",
+      "Fones com cancelamento de ruído híbrido, 42h de reprodução total, modo transparência e estojo de carregamento sem fio compacto.",
     rating: 4.8,
     reviews: 2310,
     stock: 36,
@@ -342,7 +343,7 @@ const seed: SeedProduct[] = [
   {
     id: 11,
     name: "AirBuds Mini 2",
-    category: "Wireless Earbuds",
+    category: "Fones de Ouvido Sem Fio",
     collection: "audio",
     price: 49.99,
     oldPrice: 69.99,
@@ -350,7 +351,7 @@ const seed: SeedProduct[] = [
     image: PEX("3921827"),
     gallery: [PEX("33797659"), PEX("35599938")],
     description:
-      "Feather-light earbuds with punchy bass, IPX5 sweat resistance and 28 hours of playback with the case.",
+      "Fones leves como pluma com grave potente, resistência ao suor IPX5 e 28 horas de reprodução com o estojo.",
     rating: 4.5,
     reviews: 1204,
     stock: 44,
@@ -358,14 +359,14 @@ const seed: SeedProduct[] = [
   {
     id: 12,
     name: "BassBuds Pro",
-    category: "Wireless Earbuds",
+    category: "Fones de Ouvido Sem Fio",
     collection: "audio",
     price: 99.99,
     badge: "BESTSELLER",
     image: PEX("33797659"),
     gallery: [PEX("35599938"), PEX("9528219")],
     description:
-      "Studio-tuned 12mm drivers, LDAC hi-res audio, multipoint pairing and 36h of battery with ANC off.",
+      "Drivers de 12mm afinados em estúdio, áudio hi-res LDAC, pareamento multiponto e 36h de bateria com ANC desligado.",
     rating: 4.9,
     reviews: 3087,
     stock: 21,
@@ -373,7 +374,7 @@ const seed: SeedProduct[] = [
   {
     id: 3,
     name: "BoomMate",
-    category: "Portable Speaker",
+    category: "Caixa de Som Portátil",
     collection: "audio",
     price: 89.99,
     oldPrice: 119.99,
@@ -381,7 +382,7 @@ const seed: SeedProduct[] = [
     image: PEX("29581125"),
     gallery: [PEX("4917455"), PEX("9072408")],
     description:
-      "360° portable speaker with deep bass, IP67 waterproof shell and 20 hours of non-stop music.",
+      "Caixa de som portátil 360° com grave profundo, carcaça à prova d'água IP67 e 20 horas de música sem parar.",
     rating: 4.7,
     reviews: 1421,
     stock: 27,
@@ -390,13 +391,13 @@ const seed: SeedProduct[] = [
   {
     id: 13,
     name: "BoomMate XL",
-    category: "Portable Speaker",
+    category: "Caixa de Som Portátil",
     collection: "audio",
     price: 139.99,
     image: PEX("4917455"),
     gallery: [PEX("13465232"), PEX("9072408")],
     description:
-      "Room-filling 60W speaker with dual passive radiators, party light sync and a 24-hour battery.",
+      "Caixa de som de 60W que enche o ambiente, com dois radiadores passivos, luzes sincronizadas para festas e 24 horas de bateria.",
     rating: 4.6,
     reviews: 688,
     stock: 12,
@@ -404,7 +405,7 @@ const seed: SeedProduct[] = [
   {
     id: 14,
     name: "Wave Outdoor",
-    category: "Portable Speaker",
+    category: "Caixa de Som Portátil",
     collection: "audio",
     price: 74.99,
     oldPrice: 94.99,
@@ -412,7 +413,7 @@ const seed: SeedProduct[] = [
     image: PEX("13465232"),
     gallery: [PEX("9072408"), PEX("29581125")],
     description:
-      "Rugged travel speaker with a carabiner strap, dust-proof grille and 16 hours of playtime anywhere.",
+      "Caixa de som robusta para viagem com alça mosquetão, grade à prova de poeira e 16 horas de reprodução em qualquer lugar.",
     rating: 4.4,
     reviews: 342,
     stock: 33,
@@ -420,14 +421,14 @@ const seed: SeedProduct[] = [
   {
     id: 15,
     name: "StudioSound ANC",
-    category: "Over-Ear Headphones",
+    category: "Headphone Over-Ear",
     collection: "audio",
     price: 199.99,
     badge: "NEW",
     image: PEX("210927"),
     gallery: [PEX("7772548"), PEX("11398246")],
     description:
-      "Adaptive noise cancelling over-ear headphones with 40h battery, memory-foam pads and hi-res LDAC audio.",
+      "Headphone over-ear com cancelamento de ruído adaptativo, 40h de bateria, almofadas de espuma viscoelástica e áudio hi-res LDAC.",
     rating: 4.9,
     reviews: 874,
     stock: 17,
@@ -436,7 +437,7 @@ const seed: SeedProduct[] = [
   {
     id: 16,
     name: "Wave Headphones",
-    category: "Over-Ear Headphones",
+    category: "Headphone Over-Ear",
     collection: "audio",
     price: 129.99,
     oldPrice: 159.99,
@@ -444,7 +445,7 @@ const seed: SeedProduct[] = [
     image: PEX("7054718"),
     gallery: [PEX("210927"), PEX("7772548")],
     description:
-      "Foldable wireless headphones with 45mm drivers, crisp mids, deep bass and 30 hours of listening.",
+      "Headphone sem fio dobrável com drivers de 45mm, médios nítidos, graves profundos e 30 horas de uso.",
     rating: 4.5,
     reviews: 519,
     stock: 29,
@@ -461,7 +462,7 @@ const seed: SeedProduct[] = [
     image: PEX("6296911"),
     gallery: [PEX("10104318"), PEX("3921704")],
     description:
-      "20 000mAh power bank with 22.5W fast charging, three outputs and a clear digital battery display.",
+      "Power bank de 20.000mAh com carregamento rápido de 22,5W, três saídas e display digital de bateria.",
     rating: 4.8,
     reviews: 2760,
     stock: 48,
@@ -477,7 +478,7 @@ const seed: SeedProduct[] = [
     image: PEX("518530"),
     gallery: [PEX("6296911"), PEX("8137313")],
     description:
-      "30 000mAh rugged power bank with solar top-up, dual USB-C ports and a built-in camping flashlight.",
+      "Power bank robusto de 30.000mAh com recarga solar, duas portas USB-C e lanterna de camping integrada.",
     rating: 4.4,
     reviews: 611,
     stock: 22,
@@ -492,7 +493,7 @@ const seed: SeedProduct[] = [
     image: PEX("10104281"),
     gallery: [PEX("34338614"), PEX("10104318")],
     description:
-      "Pocket-sized 10 000mAh battery with 20W PD output — charges a phone twice and fits in any bag.",
+      "Bateria de bolso de 10.000mAh com saída PD de 20W — carrega um celular duas vezes e cabe em qualquer bolsa.",
     rating: 4.6,
     reviews: 934,
     stock: 60,
@@ -500,13 +501,13 @@ const seed: SeedProduct[] = [
   {
     id: 20,
     name: "ChargePad 3in1",
-    category: "Wireless Charger",
+    category: "Carregador Sem Fio",
     collection: "power",
     price: 59.99,
     image: PEX("5961044"),
     gallery: [PEX("5948344"), PEX("7742585")],
     description:
-      "3-in-1 magnetic wireless charging station for phone, earbuds and watch with a single cable.",
+      "Estação de carregamento sem fio magnética 3 em 1 para celular, fones e relógio com um único cabo.",
     rating: 4.7,
     reviews: 486,
     stock: 19,
@@ -514,14 +515,14 @@ const seed: SeedProduct[] = [
   {
     id: 21,
     name: "QuickCharge 65W",
-    category: "Wall Charger",
+    category: "Carregador de Parede",
     collection: "power",
     price: 39.99,
     badge: "BESTSELLER",
     image: PEX("5948344"),
     gallery: [PEX("5961044"), PEX("7742585")],
     description:
-      "GaN 65W charger with three ports — powers a laptop, a tablet and a phone at the same time.",
+      "Carregador GaN de 65W com três portas — carrega notebook, tablet e celular ao mesmo tempo.",
     rating: 4.8,
     reviews: 1590,
     stock: 41,
@@ -529,13 +530,13 @@ const seed: SeedProduct[] = [
   {
     id: 22,
     name: "PowerStation 300W",
-    category: "Portable Station",
+    category: "Estação Portátil",
     collection: "power",
     price: 249.99,
     image: PEX("3921704"),
     gallery: [PEX("6296911"), PEX("518530")],
     description:
-      "Portable power station with a 300W pure sine inverter, AC outlet and USB-C PD for trips and blackouts.",
+      "Estação de energia portátil com inversor de onda senoidal pura de 300W, saída AC e USB-C PD para viagens e quedas de energia.",
     rating: 4.6,
     reviews: 214,
     stock: 8,
@@ -543,7 +544,7 @@ const seed: SeedProduct[] = [
   {
     id: 23,
     name: "MagSafe Dash Mount",
-    category: "Car Charger",
+    category: "Carregador Veicular",
     collection: "power",
     price: 44.99,
     oldPrice: 59.99,
@@ -551,7 +552,7 @@ const seed: SeedProduct[] = [
     image: PEX("7742585"),
     gallery: [PEX("5961044"), PEX("5948344")],
     description:
-      "Magnetic 15W car charger with vent + dashboard mount and 360° rotation for safe hands-free driving.",
+      "Carregador veicular magnético de 15W com suporte para saída de ar e painel, rotação de 360° para dirigir com segurança sem usar as mãos.",
     rating: 4.3,
     reviews: 297,
     stock: 25,
@@ -561,14 +562,14 @@ const seed: SeedProduct[] = [
   {
     id: 24,
     name: "SkyView Drone X",
-    category: "Camera Drone",
+    category: "Drone com Câmera",
     collection: "drones-cameras",
     price: 399.99,
     badge: "NEW",
     image: PEX("1336211"),
     gallery: [PEX("3722737"), PEX("14484029")],
     description:
-      "Foldable 4K drone with a 3-axis gimbal, 40-minute flight time, GPS return-home and 10km transmission.",
+      "Drone dobrável 4K com estabilizador de 3 eixos, 40 minutos de voo, retorno automático por GPS e transmissão de 10km.",
     rating: 4.9,
     reviews: 356,
     stock: 11,
@@ -577,7 +578,7 @@ const seed: SeedProduct[] = [
   {
     id: 25,
     name: "Falcon Mini Drone",
-    category: "Camera Drone",
+    category: "Drone com Câmera",
     collection: "drones-cameras",
     price: 189.99,
     oldPrice: 249.99,
@@ -585,7 +586,7 @@ const seed: SeedProduct[] = [
     image: PEX("14484029"),
     gallery: [PEX("1336211"), PEX("8821970")],
     description:
-      "Under-250g mini drone with 2.7K video, gesture shots, one-tap takeoff and 31 minutes of flight.",
+      "Mini drone com menos de 250g, vídeo em 2.7K, fotos por gestos, decolagem com um toque e 31 minutos de voo.",
     rating: 4.6,
     reviews: 742,
     stock: 23,
@@ -593,14 +594,14 @@ const seed: SeedProduct[] = [
   {
     id: 26,
     name: "ActionCam 4K",
-    category: "Action Camera",
+    category: "Câmera de Ação",
     collection: "drones-cameras",
     price: 229.99,
     badge: "BESTSELLER",
     image: PEX("92723"),
     gallery: [PEX("92722"), PEX("11031052")],
     description:
-      "Waterproof action camera with 4K60 video, hyper-smooth stabilisation, 40m case and voice control.",
+      "Câmera de ação à prova d'água com vídeo 4K60, estabilização ultra suave, estojo para 40m e controle por voz.",
     rating: 4.8,
     reviews: 1883,
     stock: 16,
@@ -608,7 +609,7 @@ const seed: SeedProduct[] = [
   {
     id: 27,
     name: "ActionCam Go",
-    category: "Action Camera",
+    category: "Câmera de Ação",
     collection: "drones-cameras",
     price: 149.99,
     oldPrice: 189.99,
@@ -616,7 +617,7 @@ const seed: SeedProduct[] = [
     image: PEX("11031052"),
     gallery: [PEX("4817132"), PEX("794619")],
     description:
-      "Compact 2.7K action camera with a front touch screen, image stabilisation and a full mounting kit.",
+      "Câmera de ação compacta em 2.7K com tela sensível ao toque frontal, estabilização de imagem e kit completo de suportes.",
     rating: 4.4,
     reviews: 508,
     stock: 34,
@@ -624,14 +625,14 @@ const seed: SeedProduct[] = [
   {
     id: 28,
     name: "Horizon Cam Pro",
-    category: "Action Camera",
+    category: "Câmera de Ação",
     collection: "drones-cameras",
     price: 299.99,
     badge: "NEW",
     image: PEX("4817132"),
     gallery: [PEX("92722"), PEX("794619")],
     description:
-      "360° action camera with 5.7K video, horizon levelling, slow motion and live streaming built in.",
+      "Câmera de ação 360° com vídeo em 5.7K, nivelamento de horizonte, câmera lenta e transmissão ao vivo integrada.",
     rating: 4.7,
     reviews: 231,
     stock: 10,
@@ -639,13 +640,13 @@ const seed: SeedProduct[] = [
   {
     id: 29,
     name: "TrailCam Lens Kit",
-    category: "Camera Accessory",
+    category: "Acessório para Câmera",
     collection: "drones-cameras",
     price: 79.99,
     image: PEX("794619"),
     gallery: [PEX("92723"), PEX("4817132")],
     description:
-      "Three-lens accessory kit with macro, wide-angle and ND filters for every action camera mount.",
+      "Kit com três lentes acessórias — macro, grande angular e filtros ND — compatível com qualquer suporte de câmera de ação.",
     rating: 4.3,
     reviews: 189,
     stock: 45,
@@ -655,14 +656,14 @@ const seed: SeedProduct[] = [
   {
     id: 4,
     name: "GameMax Pro",
-    category: "Gaming Mouse",
+    category: "Mouse Gamer",
     collection: "gaming",
     price: 39.99,
     oldPrice: 59.99,
     image: PEX("12877898"),
     gallery: [PEX("2115256"), PEX("7915503")],
     description:
-      "26 000 DPI optical sensor, 8 programmable buttons, 70-hour battery and a feather-light 63g shell.",
+      "Sensor óptico de 26.000 DPI, 8 botões programáveis, 70 horas de bateria e carcaça leve como pluma de 63g.",
     rating: 4.7,
     reviews: 2044,
     stock: 38,
@@ -671,14 +672,14 @@ const seed: SeedProduct[] = [
   {
     id: 30,
     name: "StrikeMouse RGB",
-    category: "Gaming Mouse",
+    category: "Mouse Gamer",
     collection: "gaming",
     price: 59.99,
     badge: "NEW",
     image: PEX("2115256"),
     gallery: [PEX("34704932"), PEX("7915503")],
     description:
-      "Wireless gaming mouse with 1ms response, 100-hour battery, RGB lighting and hot-swappable switches.",
+      "Mouse gamer sem fio com resposta de 1ms, 100 horas de bateria, iluminação RGB e switches hot-swap.",
     rating: 4.8,
     reviews: 617,
     stock: 20,
@@ -686,14 +687,14 @@ const seed: SeedProduct[] = [
   {
     id: 31,
     name: "MechaKey TKL",
-    category: "Mechanical Keyboard",
+    category: "Teclado Mecânico",
     collection: "gaming",
     price: 119.99,
     badge: "BESTSELLER",
     image: PEX("9020272"),
     gallery: [PEX("31018745"), PEX("28993064")],
     description:
-      "Tenkeyless hot-swap mechanical keyboard with per-key RGB, PBT keycaps and tri-mode connectivity.",
+      "Teclado mecânico tenkeyless hot-swap com RGB por tecla, keycaps em PBT e conectividade tri-modo.",
     rating: 4.9,
     reviews: 1122,
     stock: 14,
@@ -701,7 +702,7 @@ const seed: SeedProduct[] = [
   {
     id: 32,
     name: "GameVoice Headset",
-    category: "Gaming Headset",
+    category: "Headset Gamer",
     collection: "gaming",
     price: 109.99,
     oldPrice: 139.99,
@@ -709,7 +710,7 @@ const seed: SeedProduct[] = [
     image: PEX("11398246"),
     gallery: [PEX("28993064"), PEX("210927")],
     description:
-      "Surround-sound gaming headset with a detachable noise-cancelling mic, memory foam and RGB accents.",
+      "Headset gamer com som surround, microfone removível com cancelamento de ruído, espuma viscoelástica e detalhes em RGB.",
     rating: 4.6,
     reviews: 803,
     stock: 26,
@@ -717,13 +718,13 @@ const seed: SeedProduct[] = [
   {
     id: 33,
     name: "BattleStation Bundle",
-    category: "Gaming Bundle",
+    category: "Kit Gamer",
     collection: "gaming",
     price: 299.99,
     image: PEX("31018745"),
     gallery: [PEX("28993064"), PEX("9020272")],
     description:
-      "Complete RGB battle station: mechanical keyboard, precision mouse, headset and an XL mouse pad.",
+      "Estação de batalha RGB completa: teclado mecânico, mouse de precisão, headset e mousepad XL.",
     rating: 4.7,
     reviews: 176,
     stock: 7,
@@ -731,13 +732,13 @@ const seed: SeedProduct[] = [
   {
     id: 34,
     name: "Precision Pad XL",
-    category: "Gaming Accessory",
+    category: "Acessório Gamer",
     collection: "gaming",
     price: 29.99,
     image: PEX("7915503"),
     gallery: [PEX("12877898"), PEX("34704932")],
     description:
-      "Extra-large desk mat with a micro-textured cloth surface, anti-slip base and stitched RGB edge.",
+      "Mousepad extra grande com superfície em tecido microtexturizado, base antiderrapante e borda costurada com RGB.",
     rating: 4.5,
     reviews: 431,
     stock: 55,
@@ -762,7 +763,7 @@ export const defaultProducts: Product[] = seed.map((item) => ({
 export const defaultSettings: StoreSettings = {
   storeName: "GizmoHub",
   whatsappNumber: "5511977888609",
-  announcement: "✨ Free shipping on orders over $50 — plus 5% off when you pay with Pix",
+  announcement: "✨ Frete grátis em compras acima de R$50 — mais 5% de desconto pagando no Pix",
   showAnnouncement: true,
   freeShippingFrom: 50,
   heroAutoplayMs: 5000,
@@ -792,12 +793,26 @@ export function parsePrice(value: unknown): number {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
-export function formatPrice(value: number, currency = "$"): string {
+export function formatPrice(value: number, currency = "R$ "): string {
   const safe = Number.isFinite(value) ? value : 0;
-  return `${currency}${safe.toLocaleString("en-US", {
+  return `${currency}${safe.toLocaleString("pt-BR", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })}`;
+}
+
+/** Portuguese label shown for a product badge (the underlying value stays in English for logic). */
+export function badgeLabel(badge: Badge): string {
+  switch (badge) {
+    case "NEW":
+      return "NOVO";
+    case "SALE":
+      return "OFERTA";
+    case "BESTSELLER":
+      return "MAIS VENDIDO";
+    default:
+      return badge;
+  }
 }
 
 export function discountPercent(product: Product): number {
@@ -852,7 +867,7 @@ function normalizeProduct(raw: unknown, index: number): Product | null {
   const rawStock = item["stock"];
   const rawDescription = item["description"];
 
-  const name = typeof rawName === "string" && rawName.trim() ? rawName : `Product ${index + 1}`;
+  const name = typeof rawName === "string" && rawName.trim() ? rawName : `Produto ${index + 1}`;
   const category = typeof rawCategory === "string" && rawCategory.trim() ? rawCategory : "Gadget";
   const image = typeof rawImage === "string" && rawImage.trim() ? rawImage : "";
   const price = parsePrice(item["price"]);
@@ -931,7 +946,7 @@ function normalizeStoreData(input: unknown): StoreData {
             eyebrow: typeof slide["eyebrow"] === "string" ? slide["eyebrow"] : "",
             title: typeof slide["title"] === "string" ? slide["title"] : "",
             subtitle: typeof slide["subtitle"] === "string" ? slide["subtitle"] : "",
-            ctaLabel: typeof slide["ctaLabel"] === "string" ? slide["ctaLabel"] : "Explore Now",
+            ctaLabel: typeof slide["ctaLabel"] === "string" ? slide["ctaLabel"] : "Explorar Agora",
             ctaTarget: typeof slide["ctaTarget"] === "string" ? slide["ctaTarget"] : "catalog",
           } satisfies HeroSlide;
         })
@@ -1122,7 +1137,7 @@ export function collectionById(store: StoreData, id: string): Collection | undef
 }
 
 export function collectionName(store: StoreData, id: string): string {
-  return collectionById(store, id)?.name ?? "All products";
+  return collectionById(store, id)?.name ?? "Todos os produtos";
 }
 
 export function productsInCollection(store: StoreData, id: string): Product[] {

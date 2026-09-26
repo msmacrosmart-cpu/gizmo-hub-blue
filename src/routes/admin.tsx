@@ -31,6 +31,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { benefitIconNames, BenefitIcon } from "@/components/store/BenefitsBar";
 import {
+  badgeLabel,
   defaultStoreData,
   formatPrice,
   hydrateStore,
@@ -51,7 +52,7 @@ import {
 } from "@/lib/store";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "GizmoHub Admin Panel" }] }),
+  head: () => ({ meta: [{ title: "Painel Admin do GizmoHub" }] }),
   component: AdminPanel,
 });
 
@@ -229,7 +230,7 @@ function ProductForm({
             ))}
           </select>
         </Field>
-        <Field label="Badge">
+        <Field label="Selo">
           <select
             className={inputClass}
             value={draft.badge ?? ""}
@@ -239,12 +240,12 @@ function ProductForm({
             }}
           >
             <option value="">Nenhum</option>
-            <option value="NEW">NEW</option>
-            <option value="SALE">SALE</option>
-            <option value="BESTSELLER">BESTSELLER</option>
+            <option value="NEW">{badgeLabel("NEW")}</option>
+            <option value="SALE">{badgeLabel("SALE")}</option>
+            <option value="BESTSELLER">{badgeLabel("BESTSELLER")}</option>
           </select>
         </Field>
-        <Field label="Preço ($)">
+        <Field label="Preço (R$)">
           <input
             className={inputClass}
             type="number"
@@ -254,7 +255,7 @@ function ProductForm({
             onChange={(e) => set("price", Number(e.target.value) || 0)}
           />
         </Field>
-        <Field label="Preço antigo ($)" hint="Deixe 0 para não exibir">
+        <Field label="Preço antigo (R$)" hint="Deixe 0 para não exibir">
           <input
             className={inputClass}
             type="number"
@@ -851,7 +852,7 @@ function AdminPanel() {
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {product.badge ? (
                           <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">
-                            {product.badge}
+                            {badgeLabel(product.badge)}
                           </span>
                         ) : null}
                         {product.featured ? (
@@ -1377,7 +1378,7 @@ function AdminPanel() {
 
             <div className="space-y-4 rounded-xl border border-border bg-card p-5">
               <h3 className="text-base font-bold">Frete e pagamento</h3>
-              <Field label="Frete grátis a partir de ($)">
+              <Field label="Frete grátis a partir de (R$)">
                 <input
                   className={inputClass}
                   type="number"
