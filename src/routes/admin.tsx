@@ -29,33 +29,43 @@ function AdminPanel() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [activeTab, setActiveTab] = useState<"hero" | "products" | "categories">("products");
+
   const [heroImages, setHeroImages] = useState<string[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [editingHeroIdx, setEditingHeroIdx] = useState<number | null>(null);
+  const [tempHeroImage, setTempHeroImage] = useState<string>("");
   const [editingCategoryIdx, setEditingCategoryIdx] = useState<number | null>(null);
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("gizmoHubData");
     if (saved) {
-      const data = JSON.parse(saved);
-      setHeroImages(data.heroImages || []);
-      setProducts(data.products || []);
-      setCategories(data.categories || []);
+      try {
+        const data = JSON.parse(saved);
+        setHeroImages(data.heroImages || []);
+        setProducts(data.products || []);
+        setCategories(data.categories || []);
+      } catch (error) {
+        console.error("Erro ao carregar dados do localStorage:", error);
+      }
     }
   }, []);
 
-  const saveData = (newHero: string[], newCustomProducts: Product[], newCategories: Category[]) => {
-  localStorage.setItem(
-    "gizmoHubData",
-    JSON.stringify({
-      heroImages: newHero,
-      customProducts: newCustomProducts,
-      categories: newCategories,
-    })
-  );
-};
+  // Correção: Salvando a chave como 'products' em vez de 'customProducts'
+  const saveData = (newHero: string[], newProducts: Product[], newCategories: Category[]) => {
+    localStorage.setItem(
+      "gizmoHubData",
+      JSON.stringify({
+        heroImages: newHero,
+        products: newProducts,
+        categories: newCategories,
+      })
+    );
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (username === "Admin" && password === "Admin577") {
@@ -75,11 +85,23 @@ function AdminPanel() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-2">Usuário</label>
-              <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full border border-border rounded-lg bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Admin" />
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full border border-border rounded-lg bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="Admin"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Senha</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full border border-border rounded-lg bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="••••••••" />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border border-border rounded-lg bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="••••••••"
+              />
             </div>
             <Button type="submit" className="w-full">Entrar</Button>
           </form>
@@ -90,7 +112,7 @@ function AdminPanel() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 bg-brand-dark text-brand-light shadow-header">
         <div className="mx-auto max-w-page px-5 py-4 lg:px-10 flex items-center justify-between">
           <h1 className="text-2xl font-bold">GizmoHub Admin</h1>
@@ -101,7 +123,11 @@ function AdminPanel() {
       <main className="mx-auto max-w-page px-5 py-8 lg:px-10">
         <div className="flex gap-2 mb-8 border-b border-border">
           {["products", "hero", "categories"].map((tab) => (
-            <button key={tab} onClick={() => setActiveTab(tab as typeof activeTab)} className={`px-4 py-2 font-medium transition-colors ${activeTab === tab ? "text-primary border-b-2 border-primary -mb-1" : "text-muted-foreground hover:text-foreground"}`}>
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab as typeof activeTab)}
+              className={`px-4 py-2 font-medium transition-colors ${activeTab === tab ? "text-primary border-b-2 border-primary -mb-1" : "text-muted-foreground hover:text-foreground"}`}
+            >
               {tab === "products" && "Produtos"}
               {tab === "hero" && "Banner Hero"}
               {tab === "categories" && "Categorias"}
@@ -113,7 +139,24 @@ function AdminPanel() {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Gerenciar Produtos</h2>
-              <Button onClick={() => { const newId = Math.max(0, ...products.map((p) => p.id)) + 1; const newProduct: Product = { id: newId, name: "Novo Produto", category: "Sem categoria", price: "$0.00", image: "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg" }; const updated = [...products, newProduct]; setProducts(updated); saveData(heroImages, updated, categories); }} className="flex gap-2"><Plus className="size-4" /> Novo Produto</Button>
+              <Button
+                onClick={() => {
+                  const newId = products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1;
+                  const newProduct: Product = {
+                    id: newId,
+                    name: "Novo Produto",
+                    category: "Sem categoria",
+                    price: "$0.00",
+                    image: "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg",
+                  };
+                  const updated = [...products, newProduct];
+                  setProducts(updated);
+                  saveData(heroImages, updated, categories);
+                }}
+                className="flex gap-2"
+              >
+                <Plus className="size-4" /> Novo Produto
+              </Button>
             </div>
 
             {editingProduct ? (
@@ -141,7 +184,18 @@ function AdminPanel() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Badge</label>
-                    <select value={editingProduct.badge || ""} onChange={(e) => setEditingProduct({ ...editingProduct, badge: e.target.value || undefined })} className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm">
+                    <select
+                      value={editingProduct.badge || ""}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        let tone: "new" | "best" | "sale" | undefined = undefined;
+                        if (val === "NEW") tone = "new";
+                        if (val === "BESTSELLER") tone = "best";
+                        if (val === "SALE") tone = "sale";
+                        setEditingProduct({ ...editingProduct, badge: val || undefined, tone });
+                      }}
+                      className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm"
+                    >
                       <option value="">Nenhum</option>
                       <option value="NEW">NEW</option>
                       <option value="SALE">SALE</option>
@@ -155,7 +209,17 @@ function AdminPanel() {
                 </div>
                 <img src={editingProduct.image} alt={editingProduct.name} className="w-full h-48 object-cover rounded-lg" />
                 <div className="flex gap-2">
-                  <Button onClick={() => { const updated = products.map((p) => p.id === editingProduct.id ? editingProduct : p); setProducts(updated); saveData(heroImages, updated, categories); setEditingProduct(null); }} className="flex gap-2 flex-1"><Save className="size-4" /> Salvar</Button>
+                  <Button
+                    onClick={() => {
+                      const updated = products.map((p) => (p.id === editingProduct.id ? editingProduct : p));
+                      setProducts(updated);
+                      saveData(heroImages, updated, categories);
+                      setEditingProduct(null);
+                    }}
+                    className="flex gap-2 flex-1"
+                  >
+                    <Save className="size-4" /> Salvar
+                  </Button>
                   <Button variant="outline" onClick={() => setEditingProduct(null)} className="flex-1">Cancelar</Button>
                 </div>
               </div>
@@ -170,7 +234,18 @@ function AdminPanel() {
                       <p className="text-lg font-bold mt-2">{product.price}</p>
                       <div className="flex gap-2 mt-4">
                         <Button variant="outline" size="sm" onClick={() => setEditingProduct(product)} className="flex-1 flex gap-2"><Edit2 className="size-4" /> Editar</Button>
-                        <Button variant="outline" size="sm" onClick={() => { const updated = products.filter((p) => p.id !== product.id); setProducts(updated); saveData(heroImages, updated, categories); }} className="text-destructive"><Trash2 className="size-4" /></Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const updated = products.filter((p) => p.id !== product.id);
+                            setProducts(updated);
+                            saveData(heroImages, updated, categories);
+                          }}
+                          className="text-destructive"
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -179,12 +254,20 @@ function AdminPanel() {
             )}
           </div>
         )}
-
-        {activeTab === "hero" && (
+                      {activeTab === "hero" && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Gerenciar Banner Hero</h2>
-              <Button onClick={() => { const newImages = [...heroImages, "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg"]; setHeroImages(newImages); saveData(newImages, products, categories); }} className="flex gap-2"><Plus className="size-4" /> Adicionar Slide</Button>
+              <Button
+                onClick={() => {
+                  const newImages = [...heroImages, "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg"];
+                  setHeroImages(newImages);
+                  saveData(newImages, products, categories);
+                }}
+                className="flex gap-2"
+              >
+                <Plus className="size-4" /> Adicionar Slide
+              </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {heroImages.map((image, idx) => (
@@ -192,10 +275,25 @@ function AdminPanel() {
                   {editingHeroIdx === idx ? (
                     <div className="p-4 space-y-4">
                       <label className="block text-sm font-medium">URL da Imagem</label>
-                      <textarea value={image} onChange={(e) => setHeroImages(heroImages.map((img, i) => (i === idx ? e.target.value : img)))} className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm h-24" />
-                      <img src={image} alt={`Hero ${idx}`} className="w-full h-40 object-cover rounded-lg" />
+                      <textarea
+                        value={tempHeroImage}
+                        onChange={(e) => setTempHeroImage(e.target.value)}
+                        className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm h-24"
+                      />
+                      <img src={tempHeroImage} alt={`Hero ${idx}`} className="w-full h-40 object-cover rounded-lg" />
                       <div className="flex gap-2">
-                        <Button onClick={() => { const updated = [...heroImages]; updated[idx] = image; setHeroImages(updated); saveData(updated, products, categories); setEditingHeroIdx(null); }} className="flex-1"><Save className="size-4 mr-2" /> Salvar</Button>
+                        <Button
+                          onClick={() => {
+                            const updated = [...heroImages];
+                            updated[idx] = tempHeroImage;
+                            setHeroImages(updated);
+                            saveData(updated, products, categories);
+                            setEditingHeroIdx(null);
+                          }}
+                          className="flex-1"
+                        >
+                          <Save className="size-4 mr-2" /> Salvar
+                        </Button>
                         <Button variant="outline" onClick={() => setEditingHeroIdx(null)}>Cancelar</Button>
                       </div>
                     </div>
@@ -203,8 +301,29 @@ function AdminPanel() {
                     <>
                       <img src={image} alt={`Hero ${idx}`} className="w-full h-40 object-cover" />
                       <div className="p-4 flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => setEditingHeroIdx(idx)} className="flex-1"><Edit2 className="size-4 mr-2" /> Editar</Button>
-                        <Button variant="outline" size="sm" onClick={() => { const updated = heroImages.filter((_, i) => i !== idx); setHeroImages(updated); saveData(updated, products, categories); }} className="text-destructive"><Trash2 className="size-4" /></Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setEditingHeroIdx(idx);
+                            setTempHeroImage(image);
+                          }}
+                          className="flex-1"
+                        >
+                          <Edit2 className="size-4 mr-2" /> Editar
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const updated = heroImages.filter((_, i) => i !== idx);
+                            setHeroImages(updated);
+                            saveData(updated, products, categories);
+                          }}
+                          className="text-destructive"
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
                       </div>
                     </>
                   )}
@@ -218,25 +337,67 @@ function AdminPanel() {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold">Gerenciar Categorias</h2>
-              <Button onClick={() => { const newCategory: Category = { name: "Nova Categoria", image: "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg" }; const updated = [...categories, newCategory]; setCategories(updated); saveData(heroImages, products, updated); }} className="flex gap-2"><Plus className="size-4" /> Nova Categoria</Button>
+              <Button
+                onClick={() => {
+                  const newCategory: Category = {
+                    name: "Nova Categoria",
+                    image: "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg",
+                  };
+                  const updated = [...categories, newCategory];
+                  setCategories(updated);
+                  saveData(heroImages, products, updated);
+                }}
+                className="flex gap-2"
+              >
+                <Plus className="size-4" /> Nova Categoria
+              </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {categories.map((category, idx) => (
                 <div key={idx} className="bg-card border border-border rounded-lg overflow-hidden">
-                  {editingCategoryIdx === idx ? (
+                  {editingCategoryIdx === idx && editingCategory ? (
                     <div className="p-4 space-y-4">
                       <div>
                         <label className="block text-sm font-medium mb-2">Nome</label>
-                        <input type="text" value={category.name} onChange={(e) => { const updated = [...categories]; updated[idx].name = e.target.value; setCategories(updated); }} className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm" />
+                        <input
+                          type="text"
+                          value={editingCategory.name}
+                          onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })}
+                          className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm"
+                        />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2">URL da Imagem</label>
-                        <textarea value={category.image} onChange={(e) => { const updated = [...categories]; updated[idx].image = e.target.value; setCategories(updated); }} className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm h-24" />
+                        <textarea
+                          value={editingCategory.image}
+                          onChange={(e) => setEditingCategory({ ...editingCategory, image: e.target.value })}
+                          className="w-full border border-border rounded-lg bg-background px-4 py-2 text-sm h-24"
+                        />
                       </div>
-                      <img src={category.image} alt={category.name} className="w-full h-40 object-cover rounded-lg" />
+                      <img src={editingCategory.image} alt={editingCategory.name} className="w-full h-40 object-cover rounded-lg" />
                       <div className="flex gap-2">
-                        <Button onClick={() => { const updated = [...categories]; updated[idx] = { ...category }; setCategories(updated); saveData(heroImages, products, updated); setEditingCategoryIdx(null); }} className="flex-1"><Save className="size-4 mr-2" /> Salvar</Button>
-                        <Button variant="outline" onClick={() => setEditingCategoryIdx(null)}>Cancelar</Button>
+                        <Button
+                          onClick={() => {
+                            const updated = [...categories];
+                            updated[idx] = editingCategory;
+                            setCategories(updated);
+                            saveData(heroImages, products, updated);
+                            setEditingCategoryIdx(null);
+                            setEditingCategory(null);
+                          }}
+                          className="flex-1"
+                        >
+                          <Save className="size-4 mr-2" /> Salvar
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => {
+                            setEditingCategoryIdx(null);
+                            setEditingCategory(null);
+                          }}
+                        >
+                          Cancelar
+                        </Button>
                       </div>
                     </div>
                   ) : (
@@ -245,8 +406,29 @@ function AdminPanel() {
                       <div className="p-4">
                         <h3 className="font-bold">{category.name}</h3>
                         <div className="flex gap-2 mt-4">
-                          <Button variant="outline" size="sm" onClick={() => setEditingCategoryIdx(idx)} className="flex-1"><Edit2 className="size-4 mr-2" /> Editar</Button>
-                          <Button variant="outline" size="sm" onClick={() => { const updated = categories.filter((_, i) => i !== idx); setCategories(updated); saveData(heroImages, products, updated); }} className="text-destructive"><Trash2 className="size-4" /></Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setEditingCategoryIdx(idx);
+                              setEditingCategory({ ...category });
+                            }}
+                            className="flex-1"
+                          >
+                            <Edit2 className="size-4 mr-2" /> Editar
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              const updated = categories.filter((_, i) => i !== idx);
+                              setCategories(updated);
+                              saveData(heroImages, products, updated);
+                            }}
+                            className="text-destructive"
+                          >
+                            <Trash2 className="size-4" />
+                          </Button>
                         </div>
                       </div>
                     </>
