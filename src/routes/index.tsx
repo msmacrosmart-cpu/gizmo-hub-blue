@@ -134,14 +134,14 @@ function GizmoHub() {
         <section className="border-b border-border bg-card" aria-label="Shopping benefits">
           <div className="mx-auto grid max-w-page grid-cols-2 gap-x-4 gap-y-7 px-5 py-7 lg:grid-cols-4 lg:px-10">
             {[
-              [Truck, "Free Shipping", "On orders over $50"],
-              [RotateCcw, "30-Day Returns", "Easy returns & refunds"],
-              [ShieldCheck, "Secure Payments", "100% secure checkout"],
-              [Headphones, "24/7 Support", "We're here to help"],
-            ].map(([Icon, title, copy]) => (
-              <div key={String(title)} className="flex min-w-0 items-center gap-3 lg:justify-center">
+              { Icon: Truck, title: "Free Shipping", copy: "On orders over $50" },
+              { Icon: RotateCcw, title: "30-Day Returns", copy: "Easy returns & refunds" },
+              { Icon: ShieldCheck, title: "Secure Payments", copy: "100% secure checkout" },
+              { Icon: Headphones, title: "24/7 Support", copy: "We're here to help" },
+            ].map(({ Icon, title, copy }) => (
+              <div key={title} className="flex min-w-0 items-center gap-3 lg:justify-center">
                 <span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary-soft"><Icon className="size-[22px] text-primary" /></span>
-                <div className="min-w-0"><h2 className="text-sm font-bold sm:text-[15px]">{String(title)}</h2><p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">{String(copy)}</p></div>
+                <div className="min-w-0"><h2 className="text-sm font-bold sm:text-[15px]">{title}</h2><p className="mt-0.5 text-xs text-muted-foreground sm:text-[13px]">{copy}</p></div>
               </div>
             ))}
           </div>
