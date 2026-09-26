@@ -21,7 +21,7 @@ import {
   Youtube,
   Trash2,
 } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -63,14 +63,14 @@ const categories = [
 ];
 
 const products = [
-  { id: 1, name: "SoundPro X1", category: "Wireless Earbuds", price: "$79.99", badge: "NEW", tone: "new", image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 2, name: "Active Watch 2", category: "Smartwatch", price: "$149.99", badge: "BESTSELLER", tone: "best", image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 3, name: "BoomMate", category: "Portable Speaker", price: "$89.99", oldPrice: "$119.99", badge: "SALE", tone: "sale", image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 1, name: "SoundPro X1", category: "Wireless Earbuds", price: "$79.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 2, name: "Active Watch 2", category: "Smartwatch", price: "$149.99", badge: "BESTSELLER", tone: "best" as const, image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 3, name: "BoomMate", category: "Portable Speaker", price: "$89.99", oldPrice: "$119.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
   { id: 4, name: "GameMax Pro", category: "Gaming Mouse", price: "$39.99", oldPrice: "$59.99", image: "https://images.pexels.com/photos/12877898/pexels-photo-12877898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 5, name: "Smart Watch Pro", category: "Smartwatch", price: "$199.99", badge: "NEW", tone: "new", image: "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 6, name: "FitBand Ultra", category: "Smartwatch", price: "$129.99", oldPrice: "$169.99", badge: "SALE", tone: "sale", image: "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 5, name: "Smart Watch Pro", category: "Smartwatch", price: "$199.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 6, name: "FitBand Ultra", category: "Smartwatch", price: "$129.99", oldPrice: "$169.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
   { id: 7, name: "ProAudio Headset", category: "Wireless Earbuds", price: "$159.99", image: "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 8, name: "ChargeMax 20K", category: "Power Solutions", price: "$49.99", badge: "SALE", tone: "sale", image: "https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  { id: 8, name: "ChargeMax 20K", category: "Power Solutions", price: "$49.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
 ];
 
 const heroImages = [
@@ -110,7 +110,7 @@ function GizmoHub() {
   });
 
   // Auto-rotate hero images
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);
@@ -143,7 +143,7 @@ function GizmoHub() {
     setCart((current) => current.filter((item) => item.id !== id));
   };
 
-  const calculateTotal = () => {
+  const calculateTotal = (): number => {
     return cart.reduce((sum, item) => {
       const price = parseFloat(item.price.replace("$", ""));
       return sum + price * item.quantity;
@@ -155,7 +155,7 @@ function GizmoHub() {
     setCheckoutFormOpen(true);
   };
 
-  const handleSubmitCheckout = (e: React.FormEvent) => {
+  const handleSubmitCheckout = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!customerData.name || !customerData.address) {
       alert("Por favor, preencha todos os campos");
@@ -256,7 +256,7 @@ function GizmoHub() {
                     className={`h-2.5 rounded-full transition-all ${idx === heroSlide ? "w-7 bg-primary" : "w-2.5 bg-brand-light/30"}`}
                   />
                 ))}
-              </span>
+              </div>
             </div>
             <div className="hero-photo relative z-10 h-[310px] overflow-hidden rounded-2xl sm:h-[380px]">
               {heroImages.map((img, idx) => (
@@ -351,8 +351,8 @@ function GizmoHub() {
             ["New Arrivals", "Explore the latest tech essentials.", "Shop New", "https://images.pexels.com/photos/5207559/pexels-photo-5207559.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"],
             ["Best Sellers", "Shop our most popular picks.", "Shop Bestsellers", "https://images.pexels.com/photos/14935011/pexels-photo-14935011.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"],
           ].map(([title, copy, action, image]) => (
-            <article key={title} className="relative h-[220px] overflow-hidden rounded-2xl">
-              <img className="absolute inset-0 h-full w-full object-cover" src={image} alt={title} />
+            <article key={String(title)} className="relative h-[220px] overflow-hidden rounded-2xl">
+              <img className="absolute inset-0 h-full w-full object-cover" src={image} alt={String(title)} />
               <div className="promo-shade relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <h2 className="text-2xl font-bold text-foreground">{title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{copy}</p>
