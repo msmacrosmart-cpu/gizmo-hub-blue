@@ -54,31 +54,29 @@ const navItems = [
   ["Blog", "blog"],
   ["Contact", "contact"],
 ] as const;
-
-const categories = [
-  { name: "Audio Devices", image: "https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { name: "Smart Watches", image: "https://images.pexels.com/photos/31541678/pexels-photo-31541678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { name: "Power Solutions", image: "https://images.pexels.com/photos/4765366/pexels-photo-4765366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { name: "Drones & Cameras", image: "https://images.pexels.com/photos/8821970/pexels-photo-8821970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-];
-
-const products = [
-  { id: 1, name: "SoundPro X1", category: "Wireless Earbuds", price: "$79.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 2, name: "Active Watch 2", category: "Smartwatch", price: "$149.99", badge: "BESTSELLER", tone: "best" as const, image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 3, name: "BoomMate", category: "Portable Speaker", price: "$89.99", oldPrice: "$119.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 4, name: "GameMax Pro", category: "Gaming Mouse", price: "$39.99", oldPrice: "$59.99", image: "https://images.pexels.com/photos/12877898/pexels-photo-12877898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 5, name: "Smart Watch Pro", category: "Smartwatch", price: "$199.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 6, name: "FitBand Ultra", category: "Smartwatch", price: "$129.99", oldPrice: "$169.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 7, name: "ProAudio Headset", category: "Wireless Earbuds", price: "$159.99", image: "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-  { id: 8, name: "ChargeMax 20K", category: "Power Solutions", price: "$49.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-];
-
-const heroImages = [
-  "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-  "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-  "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-];
-
+const defaultData = {
+  categories: [
+    { name: "Audio Devices", image: "https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { name: "Smart Watches", image: "https://images.pexels.com/photos/31541678/pexels-photo-31541678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { name: "Power Solutions", image: "https://images.pexels.com/photos/4765366/pexels-photo-4765366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { name: "Drones & Cameras", image: "https://images.pexels.com/photos/8821970/pexels-photo-8821970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  ],
+  products: [
+    { id: 1, name: "SoundPro X1", category: "Wireless Earbuds", price: "$79.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 2, name: "Active Watch 2", category: "Smartwatch", price: "$149.99", badge: "BESTSELLER", tone: "best" as const, image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 3, name: "BoomMate", category: "Portable Speaker", price: "$89.99", oldPrice: "$119.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 4, name: "GameMax Pro", category: "Gaming Mouse", price: "$39.99", oldPrice: "$59.99", image: "https://images.pexels.com/photos/12877898/pexels-photo-12877898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 5, name: "Smart Watch Pro", category: "Smartwatch", price: "$199.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 6, name: "FitBand Ultra", category: "Smartwatch", price: "$129.99", oldPrice: "$169.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 7, name: "ProAudio Headset", category: "Wireless Earbuds", price: "$159.99", image: "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    { id: 8, name: "ChargeMax 20K", category: "Power Solutions", price: "$49.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+  ],
+  heroImages: [
+    "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+    "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+    "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
+  ],
+};
 const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 interface CartItem {
