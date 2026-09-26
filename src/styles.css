@@ -194,6 +194,8 @@
 .badge-new { background: var(--primary); }
 .badge-sale { background: oklch(0.577 0.245 27.3); }
 .badge-best { background: oklch(0.769 0.188 70.1); }
+.mobile-drawer { transform: translateX(100%); }
+.mobile-drawer-open { transform: translateX(0); }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
