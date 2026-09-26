@@ -46,10 +46,16 @@ function AdminPanel() {
     }
   }, []);
 
-  const saveData = (newHero: string[], newProducts: Product[], newCategories: Category[]) => {
-    localStorage.setItem("gizmoHubData", JSON.stringify({ heroImages: newHero, products: newProducts, categories: newCategories }));
-  };
-
+  const saveData = (newHero: string[], newCustomProducts: Product[], newCategories: Category[]) => {
+  localStorage.setItem(
+    "gizmoHubData",
+    JSON.stringify({
+      heroImages: newHero,
+      customProducts: newCustomProducts,
+      categories: newCategories,
+    })
+  );
+};
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (username === "Admin" && password === "Admin577") {
