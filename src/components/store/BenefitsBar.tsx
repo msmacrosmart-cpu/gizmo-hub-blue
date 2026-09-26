@@ -51,13 +51,13 @@ export function BenefitsBar({ benefits }: BenefitsBarProps) {
         {benefits.map((benefit) => (
           <div
             key={benefit.id}
-            className="flex min-w-0 items-center gap-3 rounded-xl border border-border bg-background/60 p-3 text-left lg:justify-center lg:border-0 lg:bg-transparent lg:p-0"
+            className="flex min-w-0 flex-col items-center gap-2 rounded-xl border border-border bg-background/60 p-3 text-center sm:flex-row sm:items-center sm:gap-3 sm:text-left lg:justify-center lg:border-0 lg:bg-transparent lg:p-0"
           >
             <span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary-soft">
               <BenefitIcon name={benefit.icon} className="size-[22px] text-primary" />
             </span>
             <div className="min-w-0">
-              <h2 className="truncate text-[13px] font-bold sm:text-sm lg:text-[15px]">
+              <h2 className="text-[13px] font-bold leading-tight sm:text-sm lg:text-[15px]">
                 {benefit.title}
               </h2>
               <p className="mt-0.5 text-[11px] leading-4 text-muted-foreground sm:text-[13px]">

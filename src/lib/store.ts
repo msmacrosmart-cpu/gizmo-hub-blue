@@ -833,6 +833,10 @@ function asStringArray(value: unknown): string[] {
   return [];
 }
 
+function nextId(products: readonly Product[]): number {
+  return products.reduce((max, product) => Math.max(max, product.id), 0) + 1;
+}
+
 function normalizeProduct(raw: unknown, index: number): Product | null {
   if (!raw || typeof raw !== "object") return null;
   const item = raw as Record<string, unknown>;
@@ -1066,14 +1070,35 @@ export function hydrateStore(): void {
     const legacy = window.localStorage.getItem(LEGACY_STORAGE_KEY);
     if (!legacy) return;
     const legacyParsed = JSON.parse(legacy) as Record<string, unknown>;
-    const base = normalizeStoreData({
+
+    // Migration from the pre-v1 payload: keep the new default catalog and add
+    // any custom product the store owner had created on top of it.
+    const legacyProducts = (Array.isArray(legacyParsed["products"]) ? legacyParsed["products"] : [])
+      .map((entry, index) => normalizeProduct(entry, index))
+      .filter((product): product is Product => product !== null);
+    const defaultIds = new Set(defaultProducts.map((product) => product.id));
+    const extraProducts = legacyProducts
+      .filter((product) => !defaultIds.has(product.id))
+      .map((product) => ({
+        ...product,
+        id: defaultIds.has(product.id) ? nextId(defaultProducts) : product.id,
+      }));
+
+    const legacyHero = Array.isArray(legacyParsed["heroImages"])
+      ? legacyParsed["heroImages"].filter((value): value is string => typeof value === "string")
+      : [];
+
+    const migrated = normalizeStoreData({
       ...defaultStoreData,
-      heroImages: legacyParsed["heroImages"],
-      products: legacyParsed["products"],
-      categories: legacyParsed["categories"],
+      heroSlides:
+        legacyHero.length > defaultHeroSlides.length
+          ? legacyHero.map((image, index) => ({ image, id: `hero-${index + 1}` }))
+          : defaultHeroSlides,
+      products: [...defaultProducts, ...extraProducts],
     });
-    current = base;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(base));
+
+    current = migrated;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
     emit();
   } catch (error) {
     console.error("Failed to hydrate GizmoHub store data:", error);

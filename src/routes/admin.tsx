@@ -862,12 +862,20 @@ function AdminPanel() {
                         <span className="lg:hidden">
                           {store.collections.find((c) => c.id === product.collection)?.name ?? "—"}
                         </span>
+                        <span className="font-bold lg:hidden">
+                          {formatPrice(product.price)}
+                          {product.oldPrice ? (
+                            <span className="ml-1 text-xs font-medium text-muted-foreground line-through">
+                              {formatPrice(product.oldPrice)}
+                            </span>
+                          ) : null}
+                        </span>
                       </div>
                     </div>
                     <span className="hidden text-sm text-muted-foreground lg:block">
                       {store.collections.find((c) => c.id === product.collection)?.name ?? "—"}
                     </span>
-                    <span className="text-sm font-bold">
+                    <span className="hidden text-sm font-bold lg:block">
                       {formatPrice(product.price)}
                       {product.oldPrice ? (
                         <span className="ml-1 text-xs font-medium text-muted-foreground line-through">
