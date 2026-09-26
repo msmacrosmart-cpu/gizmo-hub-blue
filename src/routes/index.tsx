@@ -4,22 +4,16 @@ import {
   Check,
   ChevronRight,
   CircleUserRound,
-  Facebook,
   Headphones,
-  Instagram,
   Mail,
   Menu,
-  PackageCheck,
   RotateCcw,
   Search,
   ShieldCheck,
   ShoppingCart,
   Star,
-  Truck,
-  Twitter,
-  X,
-  Youtube,
   Trash2,
+  Truck,
 } from "lucide-react";
 import { useState, useEffect, type FormEvent } from "react";
 
@@ -54,22 +48,64 @@ const navItems = [
   ["Blog", "blog"],
   ["Contact", "contact"],
 ] as const;
+
+// Catálogo com as imagens originais do index 1
 const defaultData = {
   categories: [
-    { name: "Audio Devices", image: "https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { name: "Smart Watches", image: "https://images.pexels.com/photos/31541678/pexels-photo-31541678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { name: "Power Solutions", image: "https://images.pexels.com/photos/4765366/pexels-photo-4765366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { name: "Drones & Cameras", image: "https://images.pexels.com/photos/8821970/pexels-photo-8821970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    {
+      name: "Audio Devices",
+      image: "https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      name: "Smart Watches",
+      image: "https://images.pexels.com/photos/31541678/pexels-photo-31541678.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      name: "Power Solutions",
+      image: "https://images.pexels.com/photos/4765366/pexels-photo-4765366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      name: "Drones & Cameras",
+      image: "https://images.pexels.com/photos/8821970/pexels-photo-8821970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
   ],
   products: [
-    { id: 1, name: "SoundPro X1", category: "Wireless Earbuds", price: "$79.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 2, name: "Active Watch 2", category: "Smartwatch", price: "$149.99", badge: "BESTSELLER", tone: "best" as const, image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 3, name: "BoomMate", category: "Portable Speaker", price: "$89.99", oldPrice: "$119.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 4, name: "GameMax Pro", category: "Gaming Mouse", price: "$39.99", oldPrice: "$59.99", image: "https://images.pexels.com/photos/12877898/pexels-photo-12877898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 5, name: "Smart Watch Pro", category: "Smartwatch", price: "$199.99", badge: "NEW", tone: "new" as const, image: "https://images.pexels.com/photos/3962316/pexels-photo-3962316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 6, name: "FitBand Ultra", category: "Smartwatch", price: "$129.99", oldPrice: "$169.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 7, name: "ProAudio Headset", category: "Wireless Earbuds", price: "$159.99", image: "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
-    { id: 8, name: "ChargeMax 20K", category: "Power Solutions", price: "$49.99", badge: "SALE", tone: "sale" as const, image: "https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+    {
+      id: 1,
+      name: "SoundPro X1",
+      category: "Wireless Earbuds",
+      price: "$79.99",
+      badge: "NEW",
+      tone: "new" as const,
+      image: "https://images.pexels.com/photos/9528219/pexels-photo-9528219.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=400&w=400",
+    },
+    {
+      id: 2,
+      name: "Active Watch 2",
+      category: "Smartwatch",
+      price: "$149.99",
+      badge: "BESTSELLER",
+      tone: "best" as const,
+      image: "https://images.pexels.com/photos/12564670/pexels-photo-12564670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      id: 3,
+      name: "BoomMate",
+      category: "Portable Speaker",
+      price: "$89.99",
+      oldPrice: "$119.99",
+      badge: "SALE",
+      tone: "sale" as const,
+      image: "https://images.pexels.com/photos/29581125/pexels-photo-29581125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      id: 4,
+      name: "GameMax Pro",
+      category: "Gaming Mouse",
+      price: "$39.99",
+      oldPrice: "$59.99",
+      image: "https://images.pexels.com/photos/12877898/pexels-photo-12877898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
   ],
   heroImages: [
     "https://images.pexels.com/photos/32912307/pexels-photo-32912307.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
@@ -77,6 +113,7 @@ const defaultData = {
     "https://images.pexels.com/photos/4481154/pexels-photo-4481154.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
   ],
 };
+
 const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 interface CartItem {
@@ -91,48 +128,11 @@ interface CustomerData {
   address: string;
   paymentMethod: "pix" | "cartao";
 }
-
 function GizmoHub() {
   const [categories, setCategories] = useState(defaultData.categories);
   const [products, setProducts] = useState(defaultData.products);
   const [heroImages, setHeroImages] = useState(defaultData.heroImages);
-  const [customProducts, setCustomProducts] = useState<any[]>([]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("gizmoHubData");
-    if (saved) {
-      try {
-        const data = JSON.parse(saved);
-        if (data.heroImages) setHeroImages(data.heroImages);
-        if (data.customProducts) setCustomProducts(data.customProducts);
-        if (data.categories) setCategories(data.categories);
-      } catch (error) {
-        console.error("Erro ao carregar dados do admin:", error);
-      }
-    }
-  }, []);
-
-  const allProducts = [...defaultData.products, ...customProducts];
-
-  // resto do código...
-}
-  // Sincronizar dados a cada 1 segundo (quando admin edita)
-useEffect(() => {
-  const interval = setInterval(() => {
-    const saved = localStorage.getItem("gizmoHubData");
-    if (saved) {
-      try {
-        const data = JSON.parse(saved);
-        if (data.heroImages) setHeroImages(data.heroImages);
-        if (data.products) setProducts(data.products);
-        if (data.categories) setCategories(data.categories);
-      } catch (e) {
-        // silencioso
-      }
-    }
-  }, 1000);
-  return () => clearInterval(interval);
-}, []);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
@@ -147,13 +147,35 @@ useEffect(() => {
     paymentMethod: "pix",
   });
 
-  // Auto-rotate hero images
+  // Carregar e sincronizar dados salvos
   useEffect(() => {
+    const loadSavedData = () => {
+      const saved = localStorage.getItem("gizmoHubData");
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          if (data.heroImages && data.heroImages.length > 0) setHeroImages(data.heroImages);
+          if (data.categories && data.categories.length > 0) setCategories(data.categories);
+          if (data.products && data.products.length > 0) setProducts(data.products);
+        } catch (error) {
+          console.error("Erro ao carregar dados salvos:", error);
+        }
+      }
+    };
+
+    loadSavedData();
+    const interval = setInterval(loadSavedData, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Timer do slider Hero
+  useEffect(() => {
+    if (!heroImages.length) return;
     const interval = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   const addToCart = (product: { id: number; name: string; price: string }) => {
     const productKey = `${product.id}-${product.name}`;
@@ -184,7 +206,7 @@ useEffect(() => {
   const calculateTotal = (): number => {
     return cart.reduce((sum, item) => {
       const price = parseFloat(item.price.replace("$", ""));
-      return sum + price * item.quantity;
+      return sum + (isNaN(price) ? 0 : price) * item.quantity;
     }, 0);
   };
 
@@ -200,7 +222,6 @@ useEffect(() => {
       return;
     }
 
-    // Construir mensagem WhatsApp
     const total = calculateTotal().toFixed(2);
     let message = "🛒 *NOVO PEDIDO GIZMO HUB* 🛒\n\n";
     message += `👤 *Cliente:* ${customerData.name}\n`;
@@ -220,12 +241,10 @@ useEffect(() => {
     message += `\n💵 *TOTAL: $${total}*\n`;
     message += `\n✅ Aguardando confirmação!\n`;
 
-    // Encodar e enviar via WhatsApp
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/5511977888609?text=${encodedMessage}`;
     window.open(whatsappURL, "_blank");
 
-    // Limpar carrinho após enviar
     setCart([]);
     setCheckoutFormOpen(false);
     setCustomerData({ name: "", address: "", paymentMethod: "pix" });
@@ -239,6 +258,7 @@ useEffect(() => {
 
   return (
     <div id="top" className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Header */}
       <header className="sticky top-0 z-40 bg-brand-dark text-brand-light shadow-header">
         <div className="mx-auto grid h-[68px] max-w-page grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 lg:grid-cols-[auto_1fr_auto] lg:px-10">
           <button className="flex min-w-0 items-center gap-2.5" onClick={() => scrollTo("top")} aria-label="GizmoHub home">
@@ -276,7 +296,7 @@ useEffect(() => {
       </header>
 
       <main>
-        {/* Hero Section com Slide Automático */}
+        {/* Hero Section */}
         <section className="hero-surface relative overflow-hidden text-brand-light">
           <div className="mx-auto grid min-h-[590px] max-w-page items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-2 lg:px-[60px] lg:py-20">
             <div className="relative z-10 max-w-xl">
@@ -311,7 +331,7 @@ useEffect(() => {
           </div>
         </section>
 
-        {/* Benefícios - 2x2 no Mobile */}
+        {/* Benefits */}
         <section className="border-b border-border bg-card" aria-label="Shopping benefits">
           <div className="mx-auto grid max-w-page grid-cols-2 gap-x-4 gap-y-7 px-5 py-7 lg:grid-cols-4 lg:px-10">
             {[
@@ -327,8 +347,7 @@ useEffect(() => {
             ))}
           </div>
         </section>
-
-        {/* Categorias */}
+        {/* Categories */}
         <section id="shop" className="scroll-mt-20 mx-auto grid max-w-page grid-cols-2 gap-3 px-5 py-10 sm:gap-5 sm:px-8 lg:grid-cols-4 lg:px-10 lg:py-[60px]">
           {categories.map((category) => (
             <article key={category.name} className="group relative h-44 overflow-hidden rounded-xl sm:h-[180px]">
@@ -343,7 +362,7 @@ useEffect(() => {
           ))}
         </section>
 
-        {/* Top Picks - com múltiplos produtos por categoria */}
+        {/* Top Picks */}
         <section id="top-picks" className="scroll-mt-20 mx-auto max-w-page">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:px-8 lg:px-10">
             <h2 className="truncate text-2xl font-bold sm:text-[26px]">Top Picks</h2>
@@ -457,7 +476,7 @@ useEffect(() => {
         <p className="mx-auto max-w-page pt-5 text-center text-[13px] text-footer-copy">© 2026 GizmoHub. All Rights Reserved.</p>
       </footer>
 
-      {/* Overlay */}
+      {/* Overlays */}
       {(mobileOpen || searchOpen || accountOpen || cartOpen || checkoutFormOpen) && (
         <button
           className="fixed inset-0 z-40 bg-overlay backdrop-blur-sm"
@@ -504,7 +523,7 @@ useEffect(() => {
         </Button>
       </aside>
 
-      {/* Search */}
+      {/* Search Modal */}
       {searchOpen && (
         <div role="dialog" aria-modal="true" aria-label="Search products" className="fixed left-1/2 top-24 z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 rounded-xl bg-card p-5 shadow-drawer">
           <input
@@ -516,7 +535,7 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Account */}
+      {/* Account Modal */}
       {accountOpen && (
         <div role="dialog" aria-modal="true" aria-label="Account" className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-xl bg-card p-6 shadow-drawer">
           <h2 className="text-lg font-bold">My Account</h2>
@@ -527,7 +546,7 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Carrinho */}
+      {/* Cart Drawer */}
       <aside
         className={`mobile-drawer fixed right-0 top-0 z-50 h-dvh w-[min(92vw,400px)] bg-card p-6 shadow-drawer transition-transform duration-300 ${cartOpen ? "mobile-drawer-open" : ""}`}
         aria-label="Shopping cart"
@@ -578,7 +597,7 @@ useEffect(() => {
         </div>
       </aside>
 
-      {/* Formulário de Checkout */}
+      {/* Checkout Modal */}
       {checkoutFormOpen && (
         <div className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl bg-card p-6 shadow-drawer max-h-[90vh] overflow-y-auto">
           <h2 className="text-xl font-bold mb-4">Checkout</h2>
@@ -655,3 +674,4 @@ useEffect(() => {
 }
 
 export default GizmoHub;
+                  
