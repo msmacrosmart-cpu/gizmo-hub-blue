@@ -5,7 +5,7 @@
  * details, build a nicely formatted (and emoji rich) message and open
  * wa.me with the text pre-filled.
  */
-import type { PaymentMethod, StoreData } from "./store";
+import type { PaymentMethod, Product, StoreData } from "./store";
 import { formatPrice } from "./store";
 
 export interface CartItem {
@@ -216,6 +216,28 @@ export function buildOrderMessage(
   parts.push(`✅ *Aguardo a confirmação do pedido!*`);
 
   return parts.join("\n");
+}
+
+/** Pre-sales question about a single product, also sent through WhatsApp. */
+export function buildProductQuestionMessage(
+  product: Product,
+  store: StoreData,
+  currency = "$",
+): string {
+  const lines = [
+    "🛍️ *OLÁ, " + store.settings.storeName.toUpperCase() + "!*",
+    "",
+    "Tenho interesse neste produto:",
+    "",
+    `📦 *${product.name}* (#${String(product.id).padStart(3, "0")})`,
+    `🏷️ ${product.category}`,
+    `💵 ${formatPrice(product.price, currency)}${
+      product.oldPrice ? ` (antes ${formatPrice(product.oldPrice, currency)})` : ""
+    }`,
+    "",
+    "Ainda está disponível? Gostaria de saber sobre frete e prazo de entrega. ✅",
+  ];
+  return lines.join("\n");
 }
 
 export function whatsappLink(phone: string, message: string): string {

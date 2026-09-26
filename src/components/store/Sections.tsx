@@ -249,6 +249,24 @@ export function Newsletter({ storeName }: { storeName: string }) {
 
 /* ---------------------------------- footer --------------------------------- */
 
+const linkTargets: Record<string, string> = {
+  "All Products": "catalog",
+  "New Arrivals": "new-arrivals",
+  "Top Deals": "deals",
+  Accessories: "catalog",
+  "Gift Cards": "catalog",
+  "Shipping Info": "shop",
+  "Returns & Refunds": "top",
+  "Track Your Order": "contact",
+  FAQs: "catalog",
+  "Contact Us": "whatsapp",
+  "About Us": "top",
+  "Our Blog": "blog",
+  Careers: "contact",
+  "Privacy Policy": "contact",
+  "Terms of Service": "contact",
+};
+
 const footerColumns = [
   ["Shop", ["All Products", "New Arrivals", "Top Deals", "Accessories", "Gift Cards"]],
   [

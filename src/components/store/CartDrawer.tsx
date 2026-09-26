@@ -154,16 +154,23 @@ export function CartDrawer({
               <span>Shipping</span>
               <span>{totals.freeShipping ? "Free" : formatPrice(totals.shipping, currency)}</span>
             </div>
-            {settings.pixDiscountPercent > 0 ? (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Pix discount ({settings.pixDiscountPercent}%)</span>
-                <span>-{formatPrice(totals.discount, currency)}</span>
-              </div>
-            ) : null}
             <div className="flex items-center justify-between pt-1 text-base font-bold text-foreground">
               <span>Total</span>
-              <span className="text-xl text-primary">{formatPrice(totals.total, currency)}</span>
+              <span className="text-xl text-primary">
+                {formatPrice(totals.subtotal + totals.shipping, currency)}
+              </span>
             </div>
+            {settings.pixDiscountPercent > 0 ? (
+              <div className="flex items-center justify-between rounded-lg bg-primary-soft px-3 py-2 text-sm font-semibold text-primary">
+                <span>💠 No Pix ({settings.pixDiscountPercent}% off)</span>
+                <span>
+                  {formatPrice(
+                    Math.max(0, totals.subtotal - totals.discount + totals.shipping),
+                    currency,
+                  )}
+                </span>
+              </div>
+            ) : null}
           </div>
 
           <Button className="w-full" onClick={onCheckout}>

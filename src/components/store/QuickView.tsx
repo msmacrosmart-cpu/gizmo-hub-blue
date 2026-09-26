@@ -2,6 +2,7 @@ import { Heart, Minus, Plus, ShoppingCart, Store, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { buildProductQuestionMessage, openWhatsApp } from "@/lib/order";
 import { discountPercent, formatPrice, sized, type Product, type StoreData } from "@/lib/store";
 import { ProductBadge } from "./ProductCard";
 import { Stars } from "./Stars";
@@ -209,6 +210,19 @@ export function QuickView({
                 <Store className="size-4" /> Buy now on WhatsApp
               </Button>
             </div>
+
+            <button
+              type="button"
+              onClick={() =>
+                openWhatsApp(
+                  store.settings.whatsappNumber,
+                  buildProductQuestionMessage(product, store, currency),
+                )
+              }
+              className="mt-3 text-xs font-semibold text-primary hover:text-primary/80"
+            >
+              💬 Tenho uma dúvida sobre este produto
+            </button>
 
             {collection && onSeeCollection ? (
               <button
