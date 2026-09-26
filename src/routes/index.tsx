@@ -93,6 +93,40 @@ interface CustomerData {
 }
 
 function GizmoHub() {
+  const [categories, setCategories] = useState(defaultData.categories);
+  const [products, setProducts] = useState(defaultData.products);
+  const [heroImages, setHeroImages] = useState(defaultData.heroImages);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("gizmoHubData");
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.heroImages) setHeroImages(data.heroImages);
+        if (data.products) setProducts(data.products);
+        if (data.categories) setCategories(data.categories);
+      } catch (e) {
+        console.error("Erro ao carregar dados do admin:", e);
+      }
+    }
+  }, []);
+  // Sincronizar dados a cada 1 segundo (quando admin edita)
+useEffect(() => {
+  const interval = setInterval(() => {
+    const saved = localStorage.getItem("gizmoHubData");
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.heroImages) setHeroImages(data.heroImages);
+        if (data.products) setProducts(data.products);
+        if (data.categories) setCategories(data.categories);
+      } catch (e) {
+        // silencioso
+      }
+    }
+  }, 1000);
+  return () => clearInterval(interval);
+}, []);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
