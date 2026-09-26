@@ -1,4 +1,4 @@
-import { Heart, Plus, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { discountPercent, formatPrice, sized, type Product } from "@/lib/store";
@@ -63,7 +63,7 @@ export function ProductCard({
       <button
         type="button"
         onClick={() => onOpen(product)}
-        className="relative block h-44 overflow-hidden bg-muted sm:h-48"
+        className="relative block h-56 overflow-hidden bg-muted sm:h-48"
         aria-label={`View ${product.name}`}
       >
         <img
@@ -105,23 +105,14 @@ export function ProductCard({
           </p>
         ) : null}
 
-        <div className="mt-auto flex gap-2">
+        <div className="mt-auto">
           <Button
             size="sm"
-            className="flex-1"
+            className="w-full"
             onClick={() => onAdd(product)}
             aria-label={`Add ${product.name} to cart`}
           >
             <ShoppingCart className="size-4" /> Add to Cart
-          </Button>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => onOpen(product)}
-            aria-label={`Quick view ${product.name}`}
-            className="px-3"
-          >
-            <Plus className="size-4" />
           </Button>
         </div>
       </div>

@@ -18,7 +18,7 @@ interface ProductGridProps {
 
 /**
  * Responsive product grid.
- * 2 columns on mobile, 3 on tablets and `columns` (2–5) on large screens.
+ * 1 column on mobile (full-width cards), 2 on tablets and `columns` (2–5) on large screens.
  */
 export function ProductGrid({
   products,
@@ -47,7 +47,7 @@ export function ProductGrid({
       className={
         carouselOnMobile
           ? "no-scrollbar -mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
-          : "grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
+          : "grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
       }
       style={{ ["--cols" as string]: safeColumns }}
     >
