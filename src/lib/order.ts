@@ -141,7 +141,7 @@ export function buildOrderMessage(
   items: CartItem[],
   customer: CustomerInfo,
   store: StoreData,
-  currency = "$",
+  currency = "R$ ",
 ): string {
   const { settings } = store;
   const totals = totalsForMethod(items, settings, customer.paymentMethod);
@@ -222,7 +222,7 @@ export function buildOrderMessage(
 export function buildProductQuestionMessage(
   product: Product,
   store: StoreData,
-  currency = "$",
+  currency = "R$ ",
 ): string {
   const lines = [
     "🛍️ *OLÁ, " + store.settings.storeName.toUpperCase() + "!*",
