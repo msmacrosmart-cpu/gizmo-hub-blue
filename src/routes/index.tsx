@@ -96,6 +96,7 @@ function GizmoHub() {
   const [categories, setCategories] = useState(defaultData.categories);
   const [products, setProducts] = useState(defaultData.products);
   const [heroImages, setHeroImages] = useState(defaultData.heroImages);
+  const [customProducts, setCustomProducts] = useState<any[]>([]);
 
   useEffect(() => {
     const saved = localStorage.getItem("gizmoHubData");
@@ -103,13 +104,18 @@ function GizmoHub() {
       try {
         const data = JSON.parse(saved);
         if (data.heroImages) setHeroImages(data.heroImages);
-        if (data.products) setProducts(data.products);
+        if (data.customProducts) setCustomProducts(data.customProducts);
         if (data.categories) setCategories(data.categories);
-      } catch (e) {
-        console.error("Erro ao carregar dados do admin:", e);
+      } catch (error) {
+        console.error("Erro ao carregar dados do admin:", error);
       }
     }
   }, []);
+
+  const allProducts = [...defaultData.products, ...customProducts];
+
+  // resto do código...
+}
   // Sincronizar dados a cada 1 segundo (quando admin edita)
 useEffect(() => {
   const interval = setInterval(() => {
